@@ -16,10 +16,14 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../Store/auth/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
+const init = {
+  email: "",
+  password: "",
+};
 
 export default function Login() {
-  const [creds, setCreds] = useState({});
-  const token = useSelector((state) => state.auth.token);
+  const [creds, setCreds] = useState(init);
+  const { loading, success,token } = useSelector((state) => state.auth);
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
 
   const dispatch = useDispatch();
@@ -27,7 +31,6 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("user login creds", creds);
     dispatch(login(creds));
   };
 
@@ -119,7 +122,7 @@ export default function Login() {
                 }}
                 onClick={onSubmit}
               >
-                Sign in
+                {loading ? "Login In Processing..." : "Login"}
               </Button>
             </Stack>
           </Stack>

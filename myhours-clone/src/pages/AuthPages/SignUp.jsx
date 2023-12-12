@@ -161,7 +161,7 @@ export default function Signup() {
                   }}
                   onClick={onSubmit}
                 >
-                  {loading ? "Register In Processing" : "Sign up"}
+                  {loading ? "Register In Processing..." : "Sign up"}
                 </Button>
               </Stack>
               <Stack pt={6}>
