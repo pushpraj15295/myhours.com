@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   AUTH_LOGIN_LOADING,
   AUTH_LOGIN_SUCCESS,
@@ -6,21 +5,13 @@ import {
   AUTH_LOGOUT,
 } from "./auth.types";
 
-
-// 
-
-let token = localStorage.getItem("token")
-
-//
-
+let token = localStorage.getItem("token");
 let init = {
   loading: false,
   error: false,
   success: false,
   token: token,
 };
-
-//
 
 export const authReducer = (state = init, { type, payload }) => {
   switch (type) {
@@ -29,7 +20,7 @@ export const authReducer = (state = init, { type, payload }) => {
         ...state,
         loading: true,
         error: false,
-        success:false,
+        success: false,
       };
     }
     case AUTH_LOGIN_SUCCESS: {
@@ -41,7 +32,7 @@ export const authReducer = (state = init, { type, payload }) => {
         ...state,
         loading: false,
         error: false,
-        success:true,
+        success: true,
         token: payload.token,
       };
     }
@@ -54,12 +45,12 @@ export const authReducer = (state = init, { type, payload }) => {
       };
     }
     case AUTH_LOGOUT: {
-        localStorage.removeItem("token")
+      localStorage.removeItem("token");
       return {
         ...state,
         loading: false,
         error: false,
-        token:"",
+        token: "",
       };
     }
     default: {
