@@ -3,6 +3,9 @@ import {
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGIN_ERROR,
   AUTH_LOGOUT,
+  AUTH_REGISTER_SUCCESS,
+  AUTH_REGISTER_ERROR,
+  AUTH_REGISTER_LOADING,
 } from "./auth.types";
 
 let token = localStorage.getItem("token");
@@ -23,6 +26,14 @@ export const authReducer = (state = init, { type, payload }) => {
         success: false,
       };
     }
+    case AUTH_REGISTER_LOADING: {
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        success: false,
+      };
+    }
     case AUTH_LOGIN_SUCCESS: {
       if (payload.token) {
         localStorage.setItem("token", payload.token);
@@ -36,7 +47,23 @@ export const authReducer = (state = init, { type, payload }) => {
         token: payload.token,
       };
     }
+    case AUTH_REGISTER_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        success: true,
+      };
+    }
     case AUTH_LOGIN_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        success: false,
+      };
+    }
+    case AUTH_REGISTER_ERROR: {
       return {
         ...state,
         loading: false,
