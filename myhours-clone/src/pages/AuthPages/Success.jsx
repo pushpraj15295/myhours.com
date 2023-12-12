@@ -8,7 +8,7 @@ const Success = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate("/login");
-    }, 5000);
+    }, 4000);
   }, []);
 
   return (

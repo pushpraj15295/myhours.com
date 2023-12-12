@@ -14,12 +14,12 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import Success from "./Success";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../Store/auth/auth.actions";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
 const init = {
   name: "",
   email: "",
@@ -32,7 +32,7 @@ export default function Signup() {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
 
   const dispatch = useDispatch();
-  const { error, loading, token, success } = useSelector((state) => state.auth);
+  const { loading, success } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -161,7 +161,7 @@ export default function Signup() {
                   }}
                   onClick={onSubmit}
                 >
-                  Sign up
+                  {loading ? "Register In Processing" : "Sign up"}
                 </Button>
               </Stack>
               <Stack pt={6}>
@@ -170,7 +170,7 @@ export default function Signup() {
                     fontSize={!isNotSmallerScreen && "14px"}
                     color={"blue.400"}
                     textDecoration={"underline"}
-                    textAlign={'center'}
+                    textAlign={"center"}
                   >
                     Already a user
                   </Text>
