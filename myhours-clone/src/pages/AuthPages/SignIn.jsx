@@ -2,7 +2,6 @@ import {
   Box,
   Text,
   Flex,
-  Link,
   Stack,
   Image,
   Input,
@@ -14,7 +13,7 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../Store/auth/auth.actions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -56,7 +55,7 @@ export default function Login() {
       <Stack
         spacing={isNotSmallerScreen ? "5" : "0"}
         mx={isNotSmallerScreen ? "auto" : "0"}
-        maxW={"lg"}
+        w={isNotSmallerScreen ? "40%" : "95%"}
         py={isNotSmallerScreen ? "12" : "0"}
         px={isNotSmallerScreen ? "15" : "0"}
         boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
@@ -102,11 +101,14 @@ export default function Login() {
                 justify={"space-between"}
               >
                 <Checkbox>Remember me</Checkbox>
-                <Link
-                  fontSize={!isNotSmallerScreen && "14px"}
-                  color={"blue.400"}
-                >
-                  Forgot password?
+                <Link to="/signup">
+                  <Text
+                    fontSize={!isNotSmallerScreen && "14px"}
+                    color={"blue.400"}
+                    textDecoration={"underline"}
+                  >
+                    Creat New Account
+                  </Text>
                 </Link>
               </Stack>
               <Button

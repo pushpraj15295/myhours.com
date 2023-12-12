@@ -13,7 +13,7 @@ export const login = (creds) => async (dispatch) => {
   dispatch({ type: AUTH_LOGIN_LOADING });
   try {
     let response = await axios.post(
-      `${process.env.process.env.REACT_APP_BASE_URL}/user/login`,
+      `${process.env.REACT_APP_BASE_URL}/user/login`,
       creds
     );
 
@@ -27,12 +27,12 @@ export const signup = (creds) => async (dispatch) => {
   dispatch({ type: AUTH_REGISTER_LOADING });
   try {
     let response = await axios.post(
-      `${process.env.process.env.REACT_APP_BASE_URL}/user/register`,
+      `${process.env.REACT_APP_BASE_URL}/user/register`,
       creds
     );
-
-    dispatch({ type: AUTH_REGISTER_SUCCESS, payload: response.data });
-  } catch {
+    dispatch({ type: AUTH_REGISTER_SUCCESS, payload: response });
+  } catch (err) {
+    console.log(err);
     dispatch({ type: AUTH_REGISTER_ERROR });
   }
 };

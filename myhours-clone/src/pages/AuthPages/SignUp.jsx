@@ -20,8 +20,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../Store/auth/auth.actions";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
+const init = {
+  name: "",
+  email: "",
+  password: "",
+};
+
 export default function Signup() {
-  const [creds, setCreds] = useState({});
+  const [creds, setCreds] = useState(init);
   const [showPassword, setShowPassword] = useState(false);
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
 
@@ -31,7 +37,6 @@ export default function Signup() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("user signup creds", creds);
     dispatch(signup(creds));
   };
 
@@ -56,15 +61,16 @@ export default function Signup() {
         <Stack
           spacing={isNotSmallerScreen ? "5" : "0"}
           mx={"auto"}
-          maxW={"lg"}
-          py={5}
+          w={isNotSmallerScreen ? "40%" : "95%"}
+          pt="4"
+          pb="2"
           px={isNotSmallerScreen ? "15" : "0"}
           boxShadow="rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px"
           margin={isNotSmallerScreen ? "18" : "0"}
         >
           <Stack>
             <Image
-              w="170px"
+              w="160px"
               m="auto"
               src="https://allhoursproductb0b1.blob.core.windows.net/static-files/myhours_logo_icon.svg"
               alt="Dan Abramov"
@@ -72,7 +78,7 @@ export default function Signup() {
             <br />
             <Text
               textAlign="center"
-              fontSize="30px"
+              fontSize="25px"
               fontWeight="bold"
               color={"black"}
             >
@@ -80,7 +86,7 @@ export default function Signup() {
             </Text>
           </Stack>
           <Box rounded={"lg"} boxShadow={"lg"} p={8}>
-            <Stack spacing={4}>
+            <Stack spacing={3}>
               <HStack>
                 <Box w="100%">
                   <FormControl id="fullname" isRequired>
@@ -159,15 +165,16 @@ export default function Signup() {
                 </Button>
               </Stack>
               <Stack pt={6}>
-                <Text align={"center"}>
-                  {token ? (
-                    <Link to="/login">
-                      "Already a user" <Text color={"blue.400"}>Login</Text>{" "}
-                    </Link>
-                  ) : (
-                    ""
-                  )}
-                </Text>
+                <Link to="/login">
+                  <Text
+                    fontSize={!isNotSmallerScreen && "14px"}
+                    color={"blue.400"}
+                    textDecoration={"underline"}
+                    textAlign={'center'}
+                  >
+                    Already a user
+                  </Text>
+                </Link>
               </Stack>
             </Stack>
           </Box>

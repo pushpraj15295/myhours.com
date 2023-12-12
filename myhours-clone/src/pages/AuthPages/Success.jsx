@@ -1,8 +1,16 @@
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Flex, Box, Stack, Text, Image } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
 
 const Success = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/login");
+    }, 5000);
+  }, []);
+
   return (
     <Flex
       minH={"70vh"}
