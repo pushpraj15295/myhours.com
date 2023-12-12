@@ -25,7 +25,7 @@ export const login = (creds) => async (dispatch) => {
 
 export const signup = (creds) => async (dispatch) => {
   dispatch({ type: AUTH_REGISTER_LOADING });
-  console.log("jadhfkl", process.env.BASE_URL, process.env);
+  console.log("jadhfkl", process.env.REACT_APP_BASE_URL, process.env);
 
   try {
     let response = await axios.post(
