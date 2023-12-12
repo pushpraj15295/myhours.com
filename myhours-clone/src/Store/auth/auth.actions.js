@@ -24,7 +24,7 @@ export const signup = (creds) => async (dispatch) => {
   dispatch({ type: AUTH_LOGIN_LOADING });
   try {
     let response = await axios.post(
-      `${process.env.BASE_Url}/user/register`,
+      `${process.env.BASE_Url}user/register`,
       creds
     );
 
