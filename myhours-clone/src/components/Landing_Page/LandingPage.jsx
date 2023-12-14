@@ -13,6 +13,9 @@ import { landingImageData } from "../../utils";
 
 const LandingPage = () => {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
   return (
     <>
       <Box className={style.parent}>

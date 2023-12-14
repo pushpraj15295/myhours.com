@@ -17,6 +17,9 @@ import { SupportData, featuresData, stepsData } from "../utils";
 
 const HowItWorks = () => {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
   return (
     <>
       <Flex

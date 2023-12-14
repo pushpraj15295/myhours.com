@@ -2,6 +2,9 @@ import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 
 const Terms = () => {
+  window.onload = (function () {
+    window.scrollTo(0, 0);
+  })();
   return (
     <div style={{ backgroundColor: "white", color: "black" }}>
       <Flex>

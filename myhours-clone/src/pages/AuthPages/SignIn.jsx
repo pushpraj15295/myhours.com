@@ -28,6 +28,9 @@ export default function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
 
   const onSubmit = (e) => {
     e.preventDefault();

@@ -11,6 +11,10 @@ import {
 import supty from "./Support.module.css";
 
 export default function Support() {
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
+  
   const handlesubmit = (e) => {
     e.preventDefault();
   };

@@ -19,6 +19,9 @@ import {
 
 function Pricing() {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
   return (
     <Box width={isNotSmallerScreen ? "80%" : "95%"} style={{ margin: "auto" }}>
       <Box>

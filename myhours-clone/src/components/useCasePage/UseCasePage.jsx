@@ -12,6 +12,9 @@ import { useCaseData } from "../../utils";
 
 const UseCasePage = () => {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:800px)");
+  window.onload = function () {
+    window.scrollTo(0, 0);
+  }();
   return (
     <>
       <Box textAlign="center">
